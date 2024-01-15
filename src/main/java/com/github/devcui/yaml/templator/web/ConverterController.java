@@ -1,9 +1,10 @@
 package com.github.devcui.yaml.templator.web;
 
+import com.github.devcui.yaml.templator.entity.YamlMeta;
+import com.github.devcui.yaml.templator.vo.YamlParam;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -17,5 +18,11 @@ public class ConverterController {
         modelAndView.setViewName("index");
         modelAndView.addObject("message", "Hello from Thymeleaf!");
         return modelAndView;
+    }
+
+    @PostMapping
+    public ResponseEntity<?> convert(@RequestBody YamlParam param) {
+        System.out.println(param.toString());
+        return null;
     }
 }

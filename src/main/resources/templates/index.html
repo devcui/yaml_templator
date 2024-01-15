@@ -16,124 +16,130 @@
 </label>
 </body>
 <script>
-    window.onload = function () {
-        const descTextArea = document.getElementById("desc")
-        const desc = {
-            id: 1,
-            parentKeyId: null,
-            title: "Root Object",
-            comment: "This is the root object",
-            key: 'root',
-            type: 'object',
-            children: [
-                {
-                    id: 11,
-                    parentKeyId: 1,
-                    comment: "String property representing a person's name",
-                    key: 'name',
-                    type: 'string',
-                },
-                {
-                    id: 12,
-                    parentKeyId: 1,
-                    comment: "Object representing a person's address",
-                    key: 'address',
-                    type: 'object',
-                    children: [
-                        {
-                            id: 11212,
-                            parentKeyId: 12,
-                            comment: "String property representing the city",
-                            key: 'city',
-                            type: 'string',
-                        },
-                        {
-                            id: 128908,
-                            parentKeyId: 12,
-                            comment: "Object representing additional address details",
-                            key: 'details',
-                            type: 'object',
-                            children: [
-                                {
-                                    id: 12890811,
-                                    parentKeyId: 128908,
-                                    comment: "String property representing a specific detail",
-                                    key: 'detail',
-                                    type: 'string',
-                                },
-                                {
-                                    id: 129999,
-                                    parentKeyId: 128908,
-                                    comment: "Array of strings representing additional notes",
-                                    key: 'notes',
-                                    type: 'array<string>',
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: 13,
-                    parentKeyId: 1,
-                    comment: "Array of integers representing a list of ages",
-                    key: 'ages',
-                    type: 'array<int>',
-                },
-                {
-                    id: 14,
-                    parentKeyId: 1,
-                    comment: "Array of objects representing a list of persons with names and ages",
-                    key: 'persons',
-                    type: 'array<object>',
-                    children: [
-                        {key: 'name', type: 'string'},
-                        {key: 'age', type: 'int'},
-                        {key: 'details', type: 'object'},
-                    ]
-                },
-            ]
-        };
-
-
-        descTextArea.innerText = JSON.stringify(desc)
-        const jsonTextArea = document.getElementById("json")
-        const json = {
-            "root": {
-                "name": "John Doe",
-                "address": {
-                    "city": "New York",
-                    "details": {
-                        "detail": "Some detail",
-                        "notes": ["Note 1", "Note 2"]
-                    }
-                },
-                "ages": [25, 30, 35],
-                "persons": [
+    const desc = {
+        id: 1,
+        parentKeyId: null,
+        title: "Root Object",
+        comment: "This is the root object",
+        key: 'root',
+        type: 'object',
+        children: [
+            {
+                id: 11,
+                parentKeyId: 1,
+                comment: "String property representing a person's name",
+                key: 'name',
+                type: 'string',
+            },
+            {
+                id: 12,
+                parentKeyId: 1,
+                comment: "Object representing a person's address",
+                key: 'address',
+                type: 'object',
+                children: [
                     {
-                        "name": "Alice",
-                        "age": 28,
-                        "details": {
-                            "detail": "Another detail",
-                            "notes": ["Note 3", "Note 4"]
-                        }
+                        id: 11212,
+                        parentKeyId: 12,
+                        comment: "String property representing the city",
+                        key: 'city',
+                        type: 'string',
                     },
                     {
-                        "name": "Bob",
-                        "age": 32,
-                        "details": {
-                            "detail": "Yet another detail",
-                            "notes": ["Note 5", "Note 6"]
-                        }
+                        id: 128908,
+                        parentKeyId: 12,
+                        comment: "Object representing additional address details",
+                        key: 'details',
+                        type: 'object',
+                        children: [
+                            {
+                                id: 12890811,
+                                parentKeyId: 128908,
+                                comment: "String property representing a specific detail",
+                                key: 'detail',
+                                type: 'string',
+                            },
+                            {
+                                id: 129999,
+                                parentKeyId: 128908,
+                                comment: "Array of strings representing additional notes",
+                                key: 'notes',
+                                type: 'array<string>',
+                            }
+                        ]
                     }
                 ]
-            }
-        }
+            },
+            {
+                id: 13,
+                parentKeyId: 1,
+                comment: "Array of integers representing a list of ages",
+                key: 'ages',
+                type: 'array<int>',
+            },
+            {
+                id: 14,
+                parentKeyId: 1,
+                comment: "Array of objects representing a list of persons with names and ages",
+                key: 'persons',
+                type: 'array<object>',
+                children: [
+                    {key: 'name', type: 'string'},
+                    {key: 'age', type: 'int'},
+                    {key: 'details', type: 'object'},
+                ]
+            },
+        ]
+    }
 
+    const json = {
+        "root": {
+            "name": "John Doe",
+            "address": {
+                "city": "New York",
+                "details": {
+                    "detail": "Some detail",
+                    "notes": ["Note 1", "Note 2"]
+                }
+            },
+            "ages": [25, 30, 35],
+            "persons": [
+                {
+                    "name": "Alice",
+                    "age": 28,
+                    "details": {
+                        "detail": "Another detail",
+                        "notes": ["Note 3", "Note 4"]
+                    }
+                },
+                {
+                    "name": "Bob",
+                    "age": 32,
+                    "details": {
+                        "detail": "Yet another detail",
+                        "notes": ["Note 5", "Note 6"]
+                    }
+                }
+            ]
+        }
+    }
+    window.onload = function () {
+        const descTextArea = document.getElementById("desc")
+        descTextArea.innerText = JSON.stringify(desc)
+        const jsonTextArea = document.getElementById("json")
         jsonTextArea.innerText = JSON.stringify(json)
     }
 
     function convert() {
-        alert(1)
+        const param = {
+            meta: desc,
+            json: JSON.stringify(json)
+        }
+        fetch("/yaml_templator/converter", {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(param),
+        }).then()
     }
 </script>
 </html>
