@@ -1,0 +1,9 @@
+server:
+  servlet:
+    context-path: /yaml_templator
+
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
